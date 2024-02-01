@@ -1,0 +1,81 @@
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    tr:nth-child(even) {
+        background-color: #e6f7ff; /* Light blue for even rows */
+    }
+
+    tr:nth-child(odd) {
+        background-color: #cce0ff; /* Lighter blue for odd rows */
+    }
+
+    .fa-trash {
+        color: white;
+        cursor: pointer;
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+    }
+
+    .btn-edit {
+        background-color: #298230;
+        color: white;
+    }
+</style>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Available Quantity</th>
+            <th>Product Color</th>
+            <th>Supplier Id</th>
+            <th>Supplier Name</th>
+            <th>Supplier Address</th>
+            <th>Supplier Contact</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of product">
+            <td>{{p.id}}</td>
+            <td>{{p.pName}}</td>
+            <td>{{p.pPrice}}</td>
+            <td>{{p.availableQuantity}}</td>
+            <td>{{p.pColor}}</td>
+            <td>{{p.supplier.supplierId}}</td>
+            <td>{{p.supplier.supplierName}}</td>
+            <td>{{p.supplier.supplierAddress}}</td>
+            <td>{{p.supplier.supplierContact}}</td>
+            <td>
+                <button class="btn btn-delete " (click)="onDelete(p.id)">
+                    <i class="fa-solid fa-trash"></i>Delete
+                </button>&nbsp;
+                <button class="btn btn-edit "(click)="onEdit(p)">
+                    <i class="fa-solid fa-pen-to-square "></i>Edit
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
